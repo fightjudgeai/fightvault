@@ -1,5 +1,8 @@
 import axios from 'axios'
 import type {
+  Promotion,
+  PromotionCreate,
+  PromotionUpdate,
   Fighter,
   FighterCreate,
   FighterCareerScore,
@@ -39,6 +42,36 @@ apiClient.interceptors.response.use(
     return Promise.reject(new Error(message))
   },
 )
+
+// ─── Promotions ──────────────────────────────────────────────────────────────
+
+export async function getPromotions(params?: { active_only?: boolean; limit?: number }): Promise<Promotion[]> {
+  const { data } = await apiClient.get<Promotion[]>('/v1/promotions', { params })
+  return data
+}
+
+export async function createPromotion(payload: PromotionCreate): Promise<Promotion> {
+  const { data } = await apiClient.post<Promotion>('/v1/promotions', payload)
+  return data
+}
+
+export async function getPromotion(id: string): Promise<Promotion> {
+  const { data } = await apiClient.get<Promotion>(`/v1/promotions/${id}`)
+  return data
+}
+
+export async function updatePromotion(id: string, payload: PromotionUpdate): Promise<Promotion> {
+  const { data } = await apiClient.patch<Promotion>(`/v1/promotions/${id}`, payload)
+  return data
+}
+
+export async function getPromotionFighters(
+  promotionId: string,
+  params?: { weight_class?: string; is_active?: boolean; limit?: number; offset?: number },
+): Promise<Fighter[]> {
+  const { data } = await apiClient.get<Fighter[]>(`/v1/promotions/${promotionId}/fighters`, { params })
+  return data
+}
 
 // ─── Events ──────────────────────────────────────────────────────────────────
 

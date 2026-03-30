@@ -1,12 +1,8 @@
 import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import {
-  LayoutDashboard,
-  CalendarDays,
+  Building2,
   Users,
-  Swords,
-  FileText,
-  Download,
   Menu,
   X,
   ChevronDown,
@@ -14,12 +10,8 @@ import {
 import clsx from 'clsx'
 
 const NAV_ITEMS = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard, end: true },
-  { to: '/events', label: 'Events', icon: CalendarDays },
-  { to: '/fighters', label: 'Fighters', icon: Users },
-  { to: '/matchmaking', label: 'Matchmaking', icon: Swords },
-  { to: '/reports', label: 'Intel Reports', icon: FileText },
-  { to: '/exports', label: 'Media Exports', icon: Download },
+  { to: '/promotions', label: 'Promotions', icon: Building2 },
+  { to: '/fighters', label: 'All Fighters', icon: Users },
 ]
 
 export default function Layout() {
@@ -50,10 +42,10 @@ export default function Layout() {
             </div>
             <div>
               <p className="text-text-primary text-sm font-semibold leading-none">
-                Fight Judge AI
+                FightVault
               </p>
               <p className="text-text-muted text-[10px] mt-0.5 leading-none tracking-wide uppercase">
-                PromoterOS
+                Fighter Archive
               </p>
             </div>
           </div>
@@ -122,7 +114,7 @@ export default function Layout() {
 
           <div className="hidden lg:block">
             <p className="text-text-muted text-sm">
-              <span className="text-text-secondary font-medium">PromoterOS</span>
+              <span className="text-text-secondary font-medium">FightVault</span>
             </p>
           </div>
 

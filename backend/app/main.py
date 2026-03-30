@@ -13,7 +13,7 @@ from fastapi.responses import JSONResponse
 
 from app.config import settings
 from app.db import close_pool, init_pool
-from app.routes import fighters, fights
+from app.routes import fighters, fights, promotions
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -102,6 +102,7 @@ async def log_requests(request: Request, call_next) -> Response:
 # Routers
 # ---------------------------------------------------------------------------
 
+app.include_router(promotions.router)
 app.include_router(fighters.router)
 app.include_router(fights.router)
 

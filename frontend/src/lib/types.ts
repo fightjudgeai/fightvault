@@ -1,3 +1,44 @@
+// ─── Promotion ───────────────────────────────────────────────────────────────
+
+export interface Promotion {
+  id: string
+  name: string
+  slug: string
+  logo_url?: string
+  website?: string
+  description?: string
+  city?: string
+  state?: string
+  country: string
+  active: boolean
+  fighter_count?: number
+  bout_count?: number
+  created_at: string
+  updated_at: string
+}
+
+export interface PromotionCreate {
+  name: string
+  slug: string
+  logo_url?: string
+  website?: string
+  description?: string
+  city?: string
+  state?: string
+  country?: string
+}
+
+export interface PromotionUpdate {
+  name?: string
+  logo_url?: string
+  website?: string
+  description?: string
+  city?: string
+  state?: string
+  country?: string
+  active?: boolean
+}
+
 // ─── Enums ────────────────────────────────────────────────────────────────────
 
 export enum WeightClass {
@@ -330,6 +371,7 @@ export interface FightersParams extends PaginationParams {
   weight_class?: WeightClass
   fighting_style?: FightingStyle
   active?: boolean
+  promotion_id?: string
 }
 
 export interface MatchmakingBoardParams extends PaginationParams {

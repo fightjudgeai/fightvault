@@ -37,11 +37,19 @@ CREATE TABLE promotions (
   id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name        TEXT NOT NULL,
   slug        TEXT NOT NULL UNIQUE,
+  logo_url    TEXT,
+  website     TEXT,
+  description TEXT,
+  city        TEXT,
+  state       TEXT,
   country     TEXT DEFAULT 'US',
   active      BOOLEAN NOT NULL DEFAULT true,
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+CREATE INDEX idx_promotions_slug ON promotions(slug);
+CREATE INDEX idx_promotions_active ON promotions(active);
 
 -- =============================================================
 -- EVENTS (minimal — FK anchor for bouts)
